@@ -7,5 +7,6 @@ int ft_isdigit(int c);
 int ft_isalnum(int c);
 int ft_isascii(int c);
 void *ft_memset(void* ptr, int value, size_t len);
+void ft_bzero(void *ptr, size_t len);
 
 #endif
