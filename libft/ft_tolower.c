@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:36:26 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 16:26:09 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 14:18:31 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/06 14:18:33 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalpha(int c)
+int ft_tolower(int c)
 {
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-        return (1);
-    return (0);
+    if(c>=65 && c<=90)
+        return (c+32);
+    return (c);
 }
 
 #include <ctype.h>
+#include <xlocale.h>
 #include <stdio.h>
+
 int main()
 {
-    printf("compare\n");
-    printf("%d, %d\n", isalpha('z'), ft_isalpha('z'));
-    printf("%d, %d\n", isalpha(0), ft_isalpha(0));
-    printf("%d, %d\n",isalpha('#'), ft_isalpha('#'));
+    printf("%d %d", tolower(' '), ft_tolower(' '));
 }

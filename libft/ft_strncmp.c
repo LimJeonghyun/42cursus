@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:36:15 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 14:52:13 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 14:42:38 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/06 16:12:15 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 연속된 범위를 0으로 모두 지정
 #include <string.h>
-static void *ft_memset(void *ptr, int value, size_t len)
+int ft_strcmp(const char *s1, const char *s2, size_t n)
 {
-    size_t          idx;
-    unsigned char   *tmp;
+    int idx;
 
-    tmp = (unsigned char *)ptr;
     idx = 0;
-    while   (idx < len)
-        tmp[idx++] = (unsigned char)value;
-    return (tmp);
-}
-
-void    ft_bzero(void *ptr, size_t len)
-{
-    ft_memset (ptr, 0, len);
+    while (idx < (int)n && ((s1[idx] != '\0') || (s2[idx] != '\0')))
+    {
+        if(s1[idx] == s2[idx])
+            idx++;
+        else
+            return (s1[idx] - s2[idx]);
+    }
+    return (0);
 }

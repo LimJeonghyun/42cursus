@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:36:15 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 14:52:13 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 15:58:34 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/06 16:08:36 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 연속된 범위를 0으로 모두 지정
 #include <string.h>
-static void *ft_memset(void *ptr, int value, size_t len)
+size_t ft_strlen(const char*s)
 {
-    size_t          idx;
-    unsigned char   *tmp;
+    size_t count;
 
-    tmp = (unsigned char *)ptr;
-    idx = 0;
-    while   (idx < len)
-        tmp[idx++] = (unsigned char)value;
-    return (tmp);
+    count = 0;
+    while (s[count])
+        count++;
+    return (count);
 }
 
-void    ft_bzero(void *ptr, size_t len)
+#include <stdio.h>
+int main()
 {
-    ft_memset (ptr, 0, len);
+    size_t len = strlen("helloworld!");
+    size_t len2  = ft_strlen("helloworld!");
+    ("%d %d", len, len2);
 }

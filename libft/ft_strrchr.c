@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:36:15 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 14:52:13 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 14:36:37 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/06 14:41:57 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 연속된 범위를 0으로 모두 지정
-#include <string.h>
-static void *ft_memset(void *ptr, int value, size_t len)
+char *ft_strrchr(const char *str, int c)
 {
-    size_t          idx;
-    unsigned char   *tmp;
-
-    tmp = (unsigned char *)ptr;
-    idx = 0;
-    while   (idx < len)
-        tmp[idx++] = (unsigned char)value;
-    return (tmp);
+    const char *last;
+    while (*str!='\0')
+    {
+        if (*str == c)
+            last = str;
+        str++;
+    }
+    return (char *)last;
 }
 
-void    ft_bzero(void *ptr, size_t len)
+#include <string.h>
+#include <stdio.h>
+int main()
 {
-    ft_memset (ptr, 0, len);
+    char dst[] = "abcdefgabcd";
+    char *s1 = strrchr(dst, 'b');
+    char *s2 = ft_strrchr(dst, 'b');
+    printf("%s %s", s1, s2);
 }
