@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 // size_t랑 null값 사용
 void *ft_memset(void* ptr, int value, size_t len)
 {
@@ -29,13 +29,35 @@ void *ft_memset(void* ptr, int value, size_t len)
 }
 
 #include <stdio.h>
-#include "libft.h"
-int main()
+int main(void)
 {
-    char arr[] = "blockdmask";
-    char arr1[] = "blockdmask";
-    memset(arr, 'c', 5*sizeof(char));
-    printf("%s\n", arr);
-    ft_memset(arr1, 'c', 5*sizeof(char));
-    printf("%s", arr1);
+    int memset_with_0[5];
+    int memset_with_1[5];
+    
+    ft_memset(memset_with_0, 0, sizeof(memset_with_0));
+    ft_memset(memset_with_1, 1, sizeof(memset_with_1));
+		 
+		//memset_with_0 출력
+		printf("memset_with_0 : ");
+    for (int i = 0; i < 5; i++)
+        printf("%d ", *(memset_with_0 + i));
+
+		//memset_with_1 출력
+		printf("\nmemset_with_1 : ");
+    for (int i = 0; i < 5; i++)
+        printf("%d ", *(memset_with_1 + i));
+    
+    return 0;
 }
+
+// #include <stdio.h>
+// #include "libft.h"
+// int main()
+// {
+//     char arr[] = "blockdmask";
+//     char arr1[] = "blockdmask";
+//     memset(arr, 'c', 5*sizeof(char));
+//     printf("%s\n", arr);
+//     ft_memset(arr1, 'c', 5*sizeof(char));
+//     printf("%s", arr1);
+// }

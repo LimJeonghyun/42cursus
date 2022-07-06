@@ -10,15 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-static size_t ft_strlen(char *restrict *str)
-{
-    size_t len;
-    while(str[len] != '\0')
-        len++;
-    return (len);
-}
 size_t ft_strlcat(char *restrict dst, const char * restrict src, size_t dstsize)
 {
     size_t dest_len;

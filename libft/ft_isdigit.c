@@ -9,7 +9,7 @@
 /*   Updated: 2022/07/06 13:36:35 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 int ft_isdigit(int c)
 {
     if (c >= '0' && c <= '9')
@@ -20,5 +20,7 @@ int ft_isdigit(int c)
 #include <stdio.h>
 int main()
 {
-    printf("%d %d", isdigit(99), ft_isdigit(99));
+    printf("%d\n", ft_isdigit('1'));
+		printf("%d\n", ft_isdigit(1));
+		printf("%d\n", ft_isdigit(49));
 }

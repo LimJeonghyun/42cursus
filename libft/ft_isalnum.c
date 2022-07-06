@@ -9,7 +9,7 @@
 /*   Updated: 2022/07/06 13:36:50 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 int ft_isalnum(int c)
 {
     if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) 
@@ -23,5 +23,10 @@ int ft_isalnum(int c)
 #include <stdio.h>
 int main()
 {
-    printf("%d %d", isalnum('1'), ft_isalnum('1'));
+    printf("%d\n", isalnum('a'));
+	printf("%d\n", isalnum('!'));
+	printf("%d\n", isalnum('1'));
+	printf("%d\n", isalnum(1));
+	printf("%d\n", isalnum(49));
+	return (0);
 }

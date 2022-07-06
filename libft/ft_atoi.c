@@ -10,26 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 int ft_atoi(const char *str)
 {
-    int num;
+    unsigned int num;
     int sign;
 
     sign = 1;
     num = 0;
-    while (*str!='\0' && *str==' ')
+    while ((*str >= 9 && *str <= 13) || *str==' ')
         str++;
-    if(*str == '-')
+    if(*str == '-' || *str == '+')
     {
-        sign *= (-1);
+        if(*str == '-')
+            sign *= (-1);
         str++;
     }
-    else if(*str == '+')
-    {
-        sign *= (1);
-        str++;
-    }
-    while (*str!='\0' && (*str >= '0' && *str <= '9'))
+    while (*str >= '0' && *str <= '9')
     {
         num = num * 10 + (*str - '0');
         str++;
@@ -41,8 +38,13 @@ int ft_atoi(const char *str)
 #include<stdio.h>
 int main()
 {
-    char s[] = "-2147483649";
-    printf("%d\n", atoi(s));
-    printf("%d", ft_atoi(s));
+   printf("%d\n", atoi("22433723768547758107"));
+    printf("%d\n", atoi("9223372036854775808"));
+    printf("%d\n", atoi("9223372036854775808"));
+    printf("========\n");
+    printf("%d\n", ft_atoi("22433723768547758107"));
+    printf("%d\n", ft_atoi("9223372036854775808"));
+    printf("%d\n", ft_atoi("9223372036854775808"));
+    // 오버 플로우면 -1 언더플로우면 0을 리턴하는데 libft에서는 노 상관
 }
 
