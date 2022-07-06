@@ -1,7 +1,7 @@
  
-int ft_isalpha(unsigned char word)
+int ft_isalpha(int c)
 {
-    if ((word >= 'A' && word <= 'Z') || (word >= 'a' && word <= 'z')) 
+    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) 
         return (1);
     return (0);
 }
