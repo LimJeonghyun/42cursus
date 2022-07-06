@@ -6,17 +6,18 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:36:26 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 16:26:09 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/06 17:05:33 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-    if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-        return (1);
-    return (0);
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	return (0);
 }
 
+/*
 #include <ctype.h>
 #include <stdio.h>
 int main()
@@ -26,3 +27,4 @@ int main()
     printf("%d, %d\n", isalpha(0), ft_isalpha(0));
     printf("%d, %d\n",isalpha('#'), ft_isalpha('#'));
 }
+*/
