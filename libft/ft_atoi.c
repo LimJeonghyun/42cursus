@@ -13,7 +13,7 @@
 #include "libft.h"
 int	ft_atoi(const char *str)
 {
-	unsigned int	num;
+	long long	num;
 	int		sign;
 
 	sign = 1;
