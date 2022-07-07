@@ -5,7 +5,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*str;
 	int	i;
 
-	str = ft_strup(s);
+	str = ft_strdup(s);
 	if (!str)
 		return (0);
 	while (str[i])

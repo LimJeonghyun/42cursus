@@ -33,18 +33,3 @@ int	ft_atoi(const char *str)
 	}
 	return (num * sign);
 }
-
-#include<stdlib.h>
-#include<stdio.h>
-int main()
-{
-   printf("%d\n", atoi("\f\n\t\r\v 224\t\t"));
-    printf("%d\n", atoi("9223372036854775808"));
-    printf("%d\n", atoi("9223372036854775808"));
-    printf("========\n");
-    printf("%d\n", ft_atoi("\f\n\t\r\v 224\t\t"));
-    printf("%d\n", ft_atoi("9223372036854775808"));
-    printf("%d\n", ft_atoi("9223372036854775808"));
-    // 오버 플로우면 -1 언더플로우면 0을 리턴하는데 libft에서는 노 상관
-}
-

@@ -16,19 +16,3 @@ int ft_isprint(int c)
         return (1);
     return (0);
 }
-
-#include <ctype.h>
-#include <stdio.h>
-
-int main(void)
-{
-	printf("%d\n", isprint('a'));
-	printf("%d\n", isprint('!'));
-	printf("%d\n", isprint('1'));
-	printf("%d\n", isprint(0));
-	printf("%d\n", isprint(49));
-	printf("%d\n", isprint(128));
-	printf("%d\n", isprint(127)); //del
-	printf("%d\n", isprint(32)); //공백
-	return (0);
-}
