@@ -9,22 +9,29 @@ SRCS =  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isprint.c\
 		
 
 BNS_SRCS = ft_lstsize.c ft_lstadd_back.c ft_lstadd_front.c \
-			 ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
-			 ft_lstlast.c ft_lstmap.c ft_lstnew.c
+		   ft_lstclear.c ft_lstdelone.c ft_lstiter.c \
+		   ft_lstlast.c ft_lstmap.c ft_lstnew.c
 
 OBJS = $(SRCS:.c=.o)
 BNS_OBJS = $(BNS_SRCS:.c=.o)
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -I.
+FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 RM = rm -f
-AR = ar rcs
+AR = ar -rcs
+INCLUDES = libft.h
+
+all	:	$(NAME)
 
 $(NAME)	:	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
+bonus :		$(BNS_OBJS)
+		$(AR) $(NAME) $^
 
-all	:	$(NAME)
+%.o : %.c $(INCLUDES)
+	$(CC) $(FLAGS) -c $< -o $@
+
 
 clean	:
 		$(RM) $(OBJS) $(BNS_OBJS)
@@ -34,6 +41,4 @@ fclean	:	clean
 
 re	:	fclean all
 
-bonus	:	$(NAME)
-		$(AR) $(NAME) $(BNS_OBJS)
 .PHONY	:	all clean fclean re bonus
