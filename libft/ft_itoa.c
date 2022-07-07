@@ -1,47 +1,50 @@
 #include "libft.h"
 
-static void	ft_strrev(char *str)
+static int	get_nbrlen(int n)
 {
-	size_t	i;
-	char	tmp;
-	size_t	len;
+	int		len;
+	long	nbr;
 
-	len = ft_strlen(str);
-	i = 0;
-	while (i < len / 2)
+	nbr = (long)n;
+	len = 0;
+	if (nbr == 0)
+		return (1);
+	else if (nbr < 0)
 	{
-		tmp = str[i];
-		str[i] = str[len - i - 1];
-		str[len - i - 1] = tmp;
-		i++;
+		nbr = -nbr;
+		len++;
 	}
+	while (nbr)
+	{
+		nbr = nbr / 10;
+		len++;
+	}
+	return (len);
 }
 
-static int	ft_abs(int n)
+char		*ft_itoa(int n)
 {
-	if (n < 0)
-		return (n * -1);
-	return (n);
-}
+	int		len;
+	char	*new_mem;
+	long	nbr;
 
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int	sign;
-	int	i;
-
-	sign = (n < 0);
-	str = malloc(sizeof(char) * (11 + sign));
-	if (!str)
-		return (0);
-	i = 0;
-	while (n != 0)
+	new_mem = NULL;
+	len = get_nbrlen(n);
+	if (!(new_mem = malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	nbr = (long)n;
+	if (nbr == 0)
+		new_mem[0] = '0';
+	else if (nbr < 0)
 	{
-		str[i++] = '0' + ft_abs(n % 10);
-		n /= 10;
+		nbr = -nbr;
+		new_mem[0] = '-';
 	}
-	if (sign)
-		str[i] = '-';
-	ft_strrev(str);
-	return (str);
- }
+	new_mem[len] = '\0';
+	while (nbr)
+	{
+		new_mem[--len] = nbr % 10 + '0';
+		nbr = nbr / 10;
+	}
+	return (new_mem);
+}

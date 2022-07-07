@@ -1,38 +1,28 @@
 #include "libft.h"
 
-static int	isinset(char c, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*trimmed;
-	int	start;
-	int	end;
-	int	i;
+{char	*start;
+	char	*end;
+	char	*ptr;
 
-	start = 0;
-	if (isinset(s1[start], set))
+	if (!s1)
+		return (NULL);
+	start = (char*)s1;
+	end = (char*)s1 + ft_strlen(s1);
+	while (*start)
+	{
+		if (!ft_strchr(set, *start))
+			break ;
 		start++;
-	end = ft_strlen(s1);
-	if (end > start && isinset(s1[end - 1], set))
+	}
+	while (start != NULL && start < end)
+	{
+		if (!ft_strchr(set, *end))
+			break ;
 		end--;
-	trimmed = (char *)malloc(sizeof(char) * (end - start + 1));
-	if (!trimmed)
-		return (0);
-	i = 0;
-	while (start < end)
-		trimmed[i++] = s1[start++];
-	trimmed[i] = '\0';
-	return (trimmed);
+	}
+	if (!(ptr = (char*)malloc(end - start + 2)))
+		return (NULL);
+	ft_strlcpy(ptr, start, end - start + 2);
+	return (ptr);
 }

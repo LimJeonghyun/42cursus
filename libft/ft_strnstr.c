@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	idx;
@@ -37,22 +37,4 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		idx++;
 	}
 	return ((void *)0);
-}
-
-#include <stdio.h>
-
-int				main()
-{
-	
-	printf("%s : %s\n",ft_strnstr("lorem ipsum dolor sit amet", "lorem", 15), strnstr("lorem ipsum dolor sit amet", "lorem", 15));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit lorem ipsum dolor", "ipsum", 35), strnstr("lorem ipsum dolor sit lorem ipsum dolor", "ipsum", 35));
-	printf("*%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "", 10), strnstr("lorem ipsum dolor sit amet", "", 10));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "ipsumm", 30), strnstr("lorem ipsum dolor sit amet", "ipsumm", 30));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "dol", 30), strnstr("lorem ipsum dolor sit amet", "dol", 30));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "consectetur", 30), strnstr("lorem ipsum dolor sit amet", "consectetur", 30));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "sit", 10), strnstr("lorem ipsum dolor sit amet", "sit", 10));
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15), strnstr("lorem ipsum dolor sit amet", "dolor", 15));	
-	printf("%s : %s\n", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 0), strnstr("lorem ipsum dolor sit amet", "dolor", 0));	
-		
-	return (0);
 }
