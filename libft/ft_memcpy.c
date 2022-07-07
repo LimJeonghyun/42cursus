@@ -11,32 +11,14 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-void *ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-    char *tmp = dst;
-    const char *s = src;
+	char		*tmp;
+	const char	*s;
 
-    while (n--)
-    {
-        *tmp++ = *s++;
-    }
-    return (dst);
-}
-
-#include <string.h>
-#include <stdio.h>
-
-int main()
-{
-    char ab[20] = "hello";
-    char aa[20];
-    
-    memcpy(aa, ab, 6*sizeof(char));
-    printf("%s\n", aa);
-
-    char ab1[20] = "hello";
-    char aa1[20];
-    
-    ft_memcpy(aa1, ab1, 6*sizeof(char));
-    printf("%s", aa1);
+	tmp = dst;
+	s = src;
+	while (n--)
+		*tmp++ = *s++;
+	return (dst);
 }

@@ -10,18 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    if(c>=65 && c<=90)
-        return (c+32);
-    return (c);
-}
-
-#include <ctype.h>
-#include <xlocale.h>
-#include <stdio.h>
-
-int main()
-{
-    printf("%d %d", tolower(' '), ft_tolower(' '));
+	if(c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
 }

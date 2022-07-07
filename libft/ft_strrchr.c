@@ -10,24 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-char *ft_strrchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-    const char *last;
-    while (*str!='\0')
-    {
-        if (*str == c)
-            last = str;
-        str++;
-    }
-    return (char *)last;
-}
+	const char	*last;
 
-#include <string.h>
-#include <stdio.h>
-int main()
-{
-    char dst[] = "abcdefgabcd";
-    char *s1 = strrchr(dst, 'b');
-    char *s2 = ft_strrchr(dst, 'b');
-    printf("%s %s", s1, s2);
+	while (*str)
+	{
+		if (*str == c)
+			last = str;
+		str++;
+	}
+	return ((char *)last);
 }
