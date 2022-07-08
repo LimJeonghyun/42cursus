@@ -61,8 +61,6 @@ char	**ft_split(const char *s, char c)
 	int		i;
 	int		len;
 
-	if (!s)
-		return (NULL);
 	len = ft_cnt(s, c);
 	ptr = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!ptr)
