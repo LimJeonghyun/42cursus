@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:47:14 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 13:48:00 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 15:08:53 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	while (lst)
 	{
 		(*f)(lst->content);
-	lst = lst->next;
+		lst = lst->next;
 	}
 }

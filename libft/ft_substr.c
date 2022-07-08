@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:17:49 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 14:19:25 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 14:29:41 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	new_len = ft_strlen(s + start);
 	if (new_len < len)
 		len = new_len;
-	substr = s(char *)malloc(sizeof(char) * (len + 1));
+	substr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!substr)
 		return (NULL);
 	ft_strlcpy(substr, s + start, len + 1);

@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:41:33 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 13:42:27 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 14:30:32 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,27 @@ static int	get_nbrlen(int n)
 char	*ft_itoa(int n)
 {
 	int		len;
-	char	*new_mem;
+	char	*new_num;
 	long	nbr;
 
-	new_mem = NULL;
+	new_num = NULL;
 	len = get_nbrlen(n);
 	new_num = malloc(sizeof(char) * (len + 1));
 	if (!new_num)
 		return (NULL);
 	nbr = (long)n;
 	if (nbr == 0)
-		new_mem[0] = '0';
+		new_num[0] = '0';
 	else if (nbr < 0)
 	{
 		nbr = -nbr;
-		new_mem[0] = '-';
+		new_num[0] = '-';
 	}
-	new_mem[len] = '\0';
+	new_num[len] = '\0';
 	while (nbr)
 	{
-		new_mem[--len] = nbr % 10 + '0';
+		new_num[--len] = nbr % 10 + '0';
 		nbr = nbr / 10;
 	}
-	return (new_mem);
+	return (new_num);
 }
