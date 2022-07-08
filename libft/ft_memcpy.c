@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:40:03 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 16:04:53 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 20:37:57 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*tmp;
 	const char	*s;
 
+	if (dst == 0 && src == 0)
+		return (NULL);
 	tmp = dst;
 	s = src;
 	while (n--)
