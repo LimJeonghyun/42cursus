@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:46:35 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 13:46:53 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 18:26:24 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst);
+	(*del)(lst->content);
+	free(lst);
 }
