@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 13:41:33 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 13:42:27 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	get_nbrlen(int n)
@@ -22,7 +34,7 @@ static int	get_nbrlen(int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*new_mem;
@@ -30,7 +42,8 @@ char		*ft_itoa(int n)
 
 	new_mem = NULL;
 	len = get_nbrlen(n);
-	if (!(new_mem = malloc(sizeof(char) * len + 1)))
+	new_num = malloc(sizeof(char) * (len + 1));
+	if (!new_num)
 		return (NULL);
 	nbr = (long)n;
 	if (nbr == 0)

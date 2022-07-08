@@ -1,5 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 13:46:35 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 13:46:53 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-void ft_lstdelone(t_list *lst, void (*del)(void *))
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-    (*del)(lst);
+	(*del)(lst);
 }

@@ -6,14 +6,15 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:33:44 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 17:08:13 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 13:55:25 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t		i;
+	size_t			i;
 	unsigned char	*tmp1;
 	unsigned char	*tmp2;
 

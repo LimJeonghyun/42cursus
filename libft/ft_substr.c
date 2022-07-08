@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 14:17:49 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 14:19:25 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
@@ -11,7 +24,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	new_len = ft_strlen(s + start);
 	if (new_len < len)
 		len = new_len;
-	if (!(substr = (char *)malloc(sizeof(char) * (len + 1))))
+	substr = s(char *)malloc(sizeof(char) * (len + 1));
+	if (!substr)
 		return (NULL);
 	ft_strlcpy(substr, s + start, len + 1);
 	return (substr);

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 14:00:12 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 14:21:27 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char		**free_malloc(char **ret)
+char	**free_malloc(char **ret)
 {
 	int	i;
 
@@ -21,7 +33,7 @@ static void	ft_strcpy(char *dst, char *src, char *to)
 	*dst = 0;
 }
 
-int			ft_cnt(const char *s, char c)
+int	ft_cnt(const char *s, char c)
 {
 	int	cnt;
 	int	flag;
@@ -42,7 +54,7 @@ int			ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
-char		**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**ptr;
 	char	*from;
@@ -52,19 +64,21 @@ char		**ft_split(const char *s, char c)
 	if (!s)
 		return (NULL);
 	len = ft_cnt(s, c);
-	if (!(ptr = (char**)malloc(sizeof(char*) * (len + 1))))
+	ptr = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!ptr)
 		return (NULL);
 	i = 0;
 	while (i < len)
 	{
 		while (*s && *s == c)
 			s++;
-		from = (char*)s;
+		from = (char *)s;
 		while (*s && *s != c)
 			s++;
-		if (!(ptr[i] = (char*)malloc(sizeof(char) * (s - from + 2))))
+		ptr[i] = (char *)malloc(sizeof(char) * (s - from + 2));
+		if (!ptr)
 			return (free_malloc(ptr));
-		ft_strcpy(ptr[i++], from, (char*)s);
+		ft_strcpy(ptr[i++], from, (char *)s);
 	}
 	ptr[i] = NULL;
 	return (ptr);

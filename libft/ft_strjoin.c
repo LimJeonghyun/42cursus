@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/08 14:10:55 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 14:12:08 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*new_s;
-	int	idx;
+	int		idx;
 
 	new_s = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!new_s)
@@ -21,6 +33,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		idx++;
 		s2++;
 	}
-	new_s[idx]= '\0';
+	new_s[idx] = '\0';
 	return (new_s);
 }

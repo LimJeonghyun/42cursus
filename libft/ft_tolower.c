@@ -6,13 +6,14 @@
 /*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:18:31 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/06 14:18:33 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/08 14:20:17 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 int	ft_tolower(int c)
 {
-	if(c >= 65 && c <= 90)
+	if (c >= 65 && c <= 90)
 		return (c + 32);
 	return (c);
 }
