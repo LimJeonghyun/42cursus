@@ -27,7 +27,7 @@ all	:	$(NAME)
 $(NAME)	:	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
 bonus :		$(BNS_OBJS)
-		$(AR) $(NAME) $^
+		$(AR) $(NAME) $(BNS_OBJS)
 
 %.o : %.c $(INCLUDES)
 	$(CC) $(FLAGS) -c $< -o $@
