@@ -12,7 +12,26 @@
 
 #include "libft.h"
 
-char	**free_malloc(char **ret)
+static int	word_count(const char *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
+	{
+		if(*s == c)
+			s++;
+		else
+		{
+			count++;
+			while(*s != c && *s)
+				s++;
+		}
+	}
+	return (count);
+}
+
+static char	**free_malloc(char **ret)
 {
 	int	i;
 
@@ -26,58 +45,58 @@ char	**free_malloc(char **ret)
 	return (NULL);
 }
 
-static void	ft_strcpy(char *dst, char *src, char *to)
+
+static void	ft_strcpy(char *dst, const char *src, int j, int k)
 {
-	while (src < to)
-		*(dst++) = *(src++);
-	*dst = 0;
+	j -= k;
+	while (j < j + k)
+	{
+		*dst = src[j];
+		j++;
+		dst++;
+		k--;
+	}
+	*dst = '\0';
 }
 
-int	ft_cnt(const char *s, char c)
+static char	**get_word(const char *s, char c, char **new, int len)
 {
-	int	cnt;
-	int	flag;
+	int	i;
+	int j;
+	int	k;
 
-	flag = 0;
-	cnt = 0;
-	while (*s)
+	i = 0;
+	j = 0;
+	while (i < len)
 	{
-		if (*s != c && !flag)
+		while (s[j] && s[j] == c)
+			j++;
+		k = 0;
+		while (s[j] && s[j] != c)
 		{
-			flag = 1;
-			cnt++;
+			j++;
+			k++;
 		}
-		if (*s == c && flag == 1)
-			flag = 0;
-		s++;
+		new[i] = (char *)malloc(sizeof(char) * (k + 1));
+		if (!new)
+			return (free_malloc(new));
+		ft_strcpy(new[i++], s, j, k);
 	}
-	return (cnt);
+	new[i] = NULL;
+	return (new);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char	**ptr;
-	char	*from;
-	int		i;
+	char	**result;
 	int		len;
 
-	len = ft_cnt(s, c);
-	ptr = (char **)malloc(sizeof(char *) * (len + 1));
-	if (!ptr)
+	if (!s)
+		return(0);
+	len = word_count(s, c);
+	result = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!result)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		while (*s && *s == c)
-			s++;
-		from = (char *)s;
-		while (*s && *s != c)
-			s++;
-		ptr[i] = (char *)malloc(sizeof(char) * (s - from + 2));
-		if (!ptr)
-			return (free_malloc(ptr));
-		ft_strcpy(ptr[i++], from, (char *)s);
-	}
-	ptr[i] = NULL;
-	return (ptr);
+	result = get_word(s, c, result, len);
+	return (result);
 }

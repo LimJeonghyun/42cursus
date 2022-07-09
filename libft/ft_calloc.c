@@ -18,9 +18,9 @@ void	*ft_calloc(size_t count, size_t size)
 
 	ptr = malloc(size * count);
 	if (!ptr)
-		return (0);
+		return (NULL);
 	if (count >= SIZE_MAX || size >= SIZE_MAX || size * count >= SIZE_MAX)
 		return (NULL);
-	ft_memset(ptr, 0, (size * count));
-	return (ptr);
+	// ft_memset(ptr, 0, (size * count));
+	return (ft_memset(ptr, 0, (size * count)));
 }

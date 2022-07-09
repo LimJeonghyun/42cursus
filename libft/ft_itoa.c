@@ -12,23 +12,23 @@
 
 #include "libft.h"
 
-static int	get_nbrlen(int n)
+static int	get_numlen(int n)
 {
 	int		len;
-	long	nbr;
+	long	num;
 
-	nbr = (long)n;
+	num = (long)n;
 	len = 0;
-	if (nbr == 0)
+	if (num == 0)
 		return (1);
-	else if (nbr < 0)
+	else if (num < 0)
 	{
-		nbr = -nbr;
+		num = -num;
 		len++;
 	}
-	while (nbr)
+	while (num)
 	{
-		nbr = nbr / 10;
+		num = num / 10;
 		len++;
 	}
 	return (len);
@@ -37,27 +37,27 @@ static int	get_nbrlen(int n)
 char	*ft_itoa(int n)
 {
 	int		len;
-	char	*new_num;
-	long	nbr;
+	char	*result;
+	long	num;
 
-	new_num = NULL;
-	len = get_nbrlen(n);
-	new_num = malloc(sizeof(char) * (len + 1));
-	if (!new_num)
+	result = NULL;
+	len = get_numlen(n);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
 		return (NULL);
-	nbr = (long)n;
-	if (nbr == 0)
-		new_num[0] = '0';
-	else if (nbr < 0)
+	num = (long)n;
+	if (num == 0)
+		result[0] = '0';
+	else if (num < 0)
 	{
-		nbr = -nbr;
-		new_num[0] = '-';
+		num = -num;
+		result[0] = '-';
 	}
-	new_num[len] = '\0';
-	while (nbr)
+	result[len] = '\0';
+	while (num)
 	{
-		new_num[--len] = nbr % 10 + '0';
-		nbr = nbr / 10;
+		result[--len] = num % 10 + '0';
+		num = num / 10;
 	}
-	return (new_num);
+	return (result);
 }
