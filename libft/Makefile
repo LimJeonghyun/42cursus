@@ -32,6 +32,9 @@ bonus :		$(BNS_OBJS)
 # %.o : %.c $(INCLUDES)
 # 	$(CC) $(FLAGS) -c $< -o $@
 
+# .c.o:
+# 			# $(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $(<:.c=.o)
+
 clean	:
 		$(RM) $(OBJS) $(BNS_OBJS)
 
