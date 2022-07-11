@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:43:02 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 15:40:38 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/11 17:24:57 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_atoi(const char *str)
 		num = num * 10 + (*str - '0');
 		str++;
 	}
-	if (num > LLONG_MAX - 1 && sign == -1)
+	if (num > (unsigned long long)LLONG_MAX + 1 && sign == -1)
 		return (0);
 	if (num > LLONG_MAX && sign == 1)
 		return (-1);
