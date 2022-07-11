@@ -26,14 +26,12 @@ all	:	$(NAME)
 
 $(NAME)	:	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
-bonus :		$(BNS_OBJS)
-		$(AR) $(NAME) $(BNS_OBJS)
+bonus :		$(OBJS) $(BNS_OBJS)
+		@make OBJS="${BNS_OBJS}"
+		
 
-# %.o : %.c $(INCLUDES)
-# 	$(CC) $(FLAGS) -c $< -o $@
-
-# .c.o:
-# 			# $(CC) $(CFLAGS) -I$(INCLUDE) -c $< -o $@
+%.o : %.c $(INCLUDES)
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean	:
 		$(RM) $(OBJS) $(BNS_OBJS)

@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 14:00:12 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 14:21:27 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/11 14:34:35 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int	word_count(const char *s, char c)
 	count = 0;
 	while (*s)
 	{
-		if(*s == c)
+		if (*s == c)
 			s++;
 		else
 		{
 			count++;
-			while(*s != c && *s)
+			while (*s != c && *s)
 				s++;
 		}
 	}
@@ -45,7 +45,6 @@ static char	**free_malloc(char **ret)
 	return (NULL);
 }
 
-
 static void	ft_strcpy(char *dst, const char *src, int j, int k)
 {
 	j -= k;
@@ -62,7 +61,7 @@ static void	ft_strcpy(char *dst, const char *src, int j, int k)
 static char	**get_word(const char *s, char c, char **new, int len)
 {
 	int	i;
-	int j;
+	int	j;
 	int	k;
 
 	i = 0;
@@ -92,7 +91,7 @@ char	**ft_split(const char *s, char c)
 	int		len;
 
 	if (!s)
-		return(0);
+		return (0);
 	len = word_count(s, c);
 	result = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!result)

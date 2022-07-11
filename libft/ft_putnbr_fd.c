@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 13:59:01 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 13:59:32 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/11 14:33:07 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 	{
 		c = n + '0';
-		write(fd, &c ,1);
+		write (fd, &c, 1);
 	}
-		
 }

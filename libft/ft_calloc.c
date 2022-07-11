@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:55:24 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/08 14:38:27 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/11 12:57:15 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	if (count >= SIZE_MAX || size >= SIZE_MAX || size * count >= SIZE_MAX)
 		return (NULL);
-	// ft_memset(ptr, 0, (size * count));
 	return (ft_memset(ptr, 0, (size * count)));
 }
