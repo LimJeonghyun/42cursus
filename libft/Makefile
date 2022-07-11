@@ -15,7 +15,7 @@ BNS_SRCS = ft_lstsize.c ft_lstadd_back.c ft_lstadd_front.c \
 OBJS = $(SRCS:.c=.o)
 BNS_OBJS = $(BNS_SRCS:.c=.o)
 
-CC = gcc
+CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 RM = rm -f
@@ -38,6 +38,8 @@ clean	:
 fclean	:	clean
 		$(RM) $(NAME)
 
-re	:	fclean all
+re	:	
+	make fclean 
+	make all
 
 .PHONY	:	all clean fclean re bonus
