@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 13:46:11 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/14 16:06:23 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/15 17:24:44 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	get_numlen(unsigned int n)
 	int		len;
 	long	num;
 
-	num = (long)n;
 	len = 0;
 	if (num == 0)
 		return (1);
@@ -42,7 +41,6 @@ char	*ft_uitoa(unsigned int n)
 	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
-	num = (long)n;
 	if (num == 0)
 		result[0] = '0';
 	else if (num < 0)
