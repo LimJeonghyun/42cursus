@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/06 20:47:41 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/06 21:31:19 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ char *get_next_line(int fd)
 
     if (!temp)
         return (0);
+    line = one_line(temp);
+    if (!line)
+        free(temp);
     if (str)
         temp = ft_strdup(str + 1, temp);
     if (!nbyte)
