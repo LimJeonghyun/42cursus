@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:20 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/06 21:31:06 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/07 21:03:01 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ size_t ft_strlen(const char *s)
         i++;
     return (i);
 }
+// ft_strjoin 내의 내장 함수로 쓰임
 
 char *ft_strjoin(char *s1, char *s2)
 {
-    size_t lens1;
-    size_t lens2;
+    size_t s1_len;
+    size_t s2_len;
     char *arr;
 
     if (!s1)
@@ -49,51 +50,25 @@ char *ft_strjoin(char *s1, char *s2)
     free(s1);
     return (arr);
 }
+// s1, s2 합쳐서 반환
 
-char *ft_strchr(const char *s, int c)
+char *ft_strchr(const char *str, int c)
 {
-    size_t i;
-    char cc;
-    size_t j;
-
-    cc = (char)c;
-    i = 0;
-    if (!s)
-        return (0);
-    j = ft_strlen(s);
-    while (i <= j)
-    {
-        if (s[i] == cc)
-            return ((char *)&s[i]);
-        i++;
-    }
-    return (0);
-}
-
-char *one_line(char *src)
-{
-    char *nomi;
     int i;
 
     i = 0;
-    if (!src[0])
-        return (0);
-    while (src[i] && src[i] != '\n')
-        i++;
-    nomi = (char *)malloc((i + 2) * sizeof(char));
-    if (nomi == 0)
-        return (0);
-    i = 0;
-    while (src[i])
+    while (str[i])
     {
-        nomi[i] = src[i];
+        if ((char)c == str[i])
+        {
+            return ((char *)(str + i));
+        }
         i++;
-        if (src[i - 1] == '\n')
-            break;
     }
-    nomi[i] = '\0';
-    return (nomi);
-}
+    if (c == 0)
+        return ((char *)(str + i));
+    return (0);
+} // 문자 c를 검색할 문자열 str함수
 
 size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -111,4 +86,20 @@ size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
     }
     dst[i] = '\0';
     return (len);
-}
+} // strjoin에 사용되는 함수
+
+char *ft_strdup(const char *s)
+{
+    size_t len;
+    size_t i;
+    char *str;
+
+    len = ft_strlen(s);
+    str = malloc(len + 1);
+    if (!str)
+        return (0);
+    while (len--)
+        str[i++] = *s++;
+    str[i] = 0;
+    return (str);
+} // 문자열  s를 복사하고 복사된 문자열을 가르키는 포인터를 반환하는 함수

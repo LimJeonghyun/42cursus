@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/06 21:31:19 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/07 20:50:20 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,13 @@ char *get_next_line(int fd)
 {
     char *line;
     char *str;
-    static char *temp;
-    int nbyte;
+    char *temp;
+    int read_byte; // read에서 반환하는 값
 
     nbyte = -1;
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (0);
-    temp = find_nl(temp, fd, &str, &nbyte);
-
-    if (!temp)
-        return (0);
-    line = one_line(temp);
-    if (!line)
-        free(temp);
-    if (str)
-        temp = ft_strdup(str + 1, temp);
-    if (!nbyte)
-    {
-        free(temp);
-        temp = 0;
-    }
+    
     return (line);
 }
 
