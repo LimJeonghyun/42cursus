@@ -6,72 +6,49 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/07 20:50:20 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/08 19:45:17 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_next_line.h"
 
 char *get_next_line(int fd)
 {
-    char *line;
-    char *str;
-    char *temp;
+    // char *tmp;
+    // char *line;
+    static node *fd_line;
+    char str[BUFFER_SIZE];
     int read_byte; // read에서 반환하는 값
 
-    nbyte = -1;
+    // fd = 0 : 표준입력
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (0);
+
+    read_byte = read(fd, str, BUFFER_SIZE);
+    printf("\ntmp: %s\n", str);
+    if (read_byte == -1)
+        return (0);
     
-    return (line);
-}
-
-char *find_nl(char *temp, int fd, char **str, int *nbyte)
-{
-    char *buf;
-
-    buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!buf)
-        return (0);
-    *str = ft_strchr(temp, '\n');
-    while (!(*str) && *nbyte)
-    {
-        *nbyte = read(fd, buf, BUFFER_SIZE);
-        if (*nbyte == -1)
-        {
-            free(buf);
-            return (0);
-        }
-        buf[*nbyte] = '\0';
-        if (*nbyte)
-            temp = ft_strjoin(temp, buf);
-        *str = ft_strchr(temp, '\n');
-    }
-    free(buf);
-    return (temp);
-}
-
-char *ft_strdup(char *src, char *temp)
-{
-    char *nomi;
     int i;
+    i = 0;
+    if (!fd_line){
+        fd_line->next = NULL;
+        struct node *newNode = malloc(sizeof(struct node));
+        newNode->next = fd_line->next;
+        newNode->data = str;
+        fd_line-> next = newNode;
+        // while (str[i]){
+        //     i++;
+        //     fd_line->data[i] = str[i];
 
-    i = 0;
-    while (src[i])
-        i++;
-    nomi = (char *)malloc((i + 1) * sizeof(char));
-    if (nomi == 0)
-    {
-        free(temp);
-        return (0);
+        // }
     }
-    i = 0;
-    while (src[i])
-    {
-        nomi[i] = src[i];
-        i++;
-    }
-    nomi[i] = '\0';
-    free(temp);
-    return (nomi);
+    // if(fd_line){
+        
+    // }
+
+    // line = merge_node
+    return ("check");
+    // return (line);
 }

@@ -1,2 +1,2 @@
-abcded\n
+abcded
 12345\0
