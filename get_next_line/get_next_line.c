@@ -23,8 +23,8 @@ char *get_next_line(int fd)
     buffer = read_line(fd, buffer);
     if (!buffer)
 		return (NULL);
-	line = ft_line(buffer);
-	buffer = ft_next(buffer);
+	line = get_line(buffer);
+	buffer = del_line(buffer);
 	return (line);
 }
 
@@ -50,7 +50,8 @@ char	*read_line(int fd, char *res)
 		// 0 to end for leak
 		line[read_byte] = 0;
 		// join and free
-		res = ft_free(res, line);
+		res = ft_strjoin(res, line);
+		// res = fd_free(res, line);_
 		// quit if \n find
 		if (ft_strchr(line, '\n'))
 			break ;
@@ -60,17 +61,43 @@ char	*read_line(int fd, char *res)
 }
 
 // join and free
-char	*ft_free(char *buffer, char *buf)
-{
-	char	*temp;
+// char *fd_free(char *buffer, char *line);
+// {
+// 	char	*tmp;
 
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
-	return (temp);
+// 	tmp = ft_strjoin(buffer, line);
+// 	free(buffer);
+// 	return (tmp);
+// }
+
+char *get_line(char *buffer)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	// if no line return NULL
+	if (!buffer[i])
+		return (NULL);
+	// go to the eol
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	// malloc to eol
+	line = ft_calloc(i + 2, sizeof(char));
+	i = 0;
+	// line = buffer
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	// if eol is \0 or \n, replace eol by \n
+	if (buffer[i] && buffer[i] == '\n')
+		line[i++] = '\n';
+	return (line);
 }
 
-// delete line find
-char	*ft_next(char *buffer)
+char *del_line(char *buffer)
 {
 	int		i;
 	int		j;
@@ -97,30 +124,3 @@ char	*ft_next(char *buffer)
 	return (line);
 }
 
-// take line for return
-char	*ft_line(char *buffer)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	// if no line return NULL
-	if (!buffer[i])
-		return (NULL);
-	// go to the eol
-	while (buffer[i] && buffer[i] != '\n')
-		i++;
-	// malloc to eol
-	line = ft_calloc(i + 2, sizeof(char));
-	i = 0;
-	// line = buffer
-	while (buffer[i] && buffer[i] != '\n')
-	{
-		line[i] = buffer[i];
-		i++;
-	}
-	// if eol is \0 or \n, replace eol by \n
-	if (buffer[i] && buffer[i] == '\n')
-		line[i++] = '\n';
-	return (line);
-}

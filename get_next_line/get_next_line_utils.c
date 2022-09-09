@@ -12,6 +12,31 @@
 
 #include "get_next_line.h"
 
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size * count);
+	if (!ptr)
+		return (NULL);
+	if (!count && (count >= SIZE_MAX || size >= SIZE_MAX || size >= SIZE_MAX / count))
+		return (NULL);
+	return (ft_memset(ptr, 0, (size * count)));
+}
+
+void	*ft_memset(void *ptr, int value, size_t len)
+{
+	size_t	idx;
+	char	*tmp;
+
+	tmp = (char *)ptr;
+	idx = 0;
+	while (idx < len)
+		tmp[idx++] = (unsigned char)value;
+	return (ptr);
+}
+
+
 size_t ft_strlen(const char *s)
 {
     int i;
@@ -21,8 +46,6 @@ size_t ft_strlen(const char *s)
         i++;
     return (i);
 }
-// ft_strjoin 내의 내장 함수로 쓰임
-
 // char *ft_strjoin(char *s1, char *s2)
 // {
 //     size_t s1_len;
@@ -54,40 +77,23 @@ size_t ft_strlen(const char *s)
 
 
 
-size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-    unsigned int i;
-    unsigned int len;
+// size_t ft_strlcpy(char *dst, const char *src, size_t dstsize)
+// {
+//     unsigned int i;
+//     unsigned int len;
 
-    i = 0;
-    len = ft_strlen(src);
-    if (!dstsize)
-        return (len);
-    while (i < len && i < dstsize - 1)
-    {
-        dst[i] = src[i];
-        i++;
-    }
-    dst[i] = '\0';
-    return (len);
-} // strjoin에 사용되는 함수
-
-char *ft_strdup(const char *s)
-{
-    size_t len;
-    size_t i;
-    char *str;
-
-    len = ft_strlen(s);
-    i = 0;
-    str = malloc(len + 1);
-    if (!str)
-        return (0);
-    while (len--)
-        str[i++] = *s++;
-    str[i] = 0;
-    return (str);
-} // 문자열  s를 복사하고 복사된 문자열을 가르키는 포인터를 반환하는 함수
+//     i = 0;
+//     len = ft_strlen(src);
+//     if (!dstsize)
+//         return (len);
+//     while (i < len && i < dstsize - 1)
+//     {
+//         dst[i] = src[i];
+//         i++;
+//     }
+//     dst[i] = '\0';
+//     return (len);
+// } // strjoin에 사용되는 함수
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -117,18 +123,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-// char	*ft_strchr(const char *string, int searchedChar )
-// {
-// 	char	*str;
-
-// 	str = (char *)string;
-// 	while (*str != searchedChar && *str != 0)
-// 		str++;
-// 	if (*str == searchedChar)
-// 		return (str);
-// 	else
-// 		return (NULL);
-// }
 
 char *ft_strchr(const char *str, int c)
 {
@@ -148,27 +142,4 @@ char *ft_strchr(const char *str, int c)
     return (0);
 } // 문자 c를 검색할 문자열 str함수
 
-void	ft_bzero(void *s, size_t n)
-{
-	char	*str;
-	size_t	i;
 
-	str = (char *)s;
-	i = 0;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
-}
-
-void	*ft_calloc(size_t elementCount, size_t elementSize)
-{
-	char	*res;
-
-	res = malloc(elementSize * elementCount);
-	if (!res)
-		return (NULL);
-	ft_bzero(res, elementSize * elementCount);
-	return (res);
-}

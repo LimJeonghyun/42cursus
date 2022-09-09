@@ -13,12 +13,15 @@
 SRCS = get_next_line.c get_next_line_utils.c 
 OBJS = $(SRCS: .c=.o)
 
-CC = CC
-FLAGS = -Wall -Wextra -Werror -c
+BONUS_SRCS = $(shell find . -iname "*_bonus.c")
+# BONUS_SRCS = get_next_line_bonus.c get_next_line_utils_bonus.c
+BONUS_OBJS = $(BONUS_SRCS: .c=.o)
+
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
 NAME = get_next_line.a
 RM = rm -f
 AR = ar -rcs
-INCLUDES = -I.get_next_line.h
 
 all : $(NAME)
 
