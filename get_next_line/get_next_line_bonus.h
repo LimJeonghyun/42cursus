@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:43 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 15:46:44 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 17:38:55 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 # include <unistd.h>
 # include <limits.h>
 
+// get_next_line_bonus
 char	*get_next_line(int fd);
+
+// get_next_line_utils_bonus
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);

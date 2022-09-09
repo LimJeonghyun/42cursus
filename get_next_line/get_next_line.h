@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:35 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 16:18:34 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 17:23:31 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 //  get_next_line
 char	*get_next_line(int fd);
 char	*read_line(int fd, char *buffer);
+char	*fd_free(char *buffer, char *line);
 char	*get_line(char *buffer);
 char	*del_line(char *buffer);
-char	*fd_free(char *buffer, char *line);
 
 // get_next_line_utils
 void	*ft_calloc(size_t count, size_t size);

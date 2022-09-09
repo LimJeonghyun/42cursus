@@ -6,11 +6,39 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:40 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 15:46:41 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 17:40:52 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	static char	*buffer[OPEN_MAX];
+	char		*str;
+	int			readByte;
+	int			i;
+
+	i = 0;
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= OPEN_MAX)
+		return (0);
+	line = malloc((sizeof(char) * (BUFFER_SIZE + 1)));
+	if (!line)
+		return (0);
+	while (!ft_strchr(buffer[fd], '\n'))
+	{
+		readByte = read(fd, line, BUFFER_SIZE);
+		if (readByte <= 0)
+			break ;
+		line[readByte] = '\0';
+		buffer[fd] = ft_strjoin(buffer[fd], line);
+	}
+	str = make_line(buffer[fd], i);
+	buffer[fd] = cut_line(buffer[fd]);
+	free (line);
+	return (str);
+}
 
 char	*make_line(char *backup, int j)
 {
@@ -62,30 +90,3 @@ char	*cut_line(char *backup)
 	return (str);
 }
 
-char	*get_next_line(int fd)
-{
-	char		*readstr;
-	static char	*backup[OPEN_MAX];
-	char		*str;
-	int			readsize;
-	int			j;
-
-	j = 0;
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd >= OPEN_MAX)
-		return (0);
-	readstr = malloc((sizeof(char) * (BUFFER_SIZE + 1)));
-	if (!readstr)
-		return (0);
-	while (!ft_strchr(backup[fd], '\n'))
-	{
-		readsize = read(fd, readstr, BUFFER_SIZE);
-		if (readsize <= 0)
-			break ;
-		readstr[readsize] = '\0';
-		backup[fd] = ft_strjoin(backup[fd], readstr);
-	}
-	str = make_line(backup[fd], j);
-	backup[fd] = cut_line(backup[fd]);
-	free (readstr);
-	return (str);
-}
