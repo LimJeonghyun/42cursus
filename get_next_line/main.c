@@ -16,5 +16,7 @@ int main()
     // printf("OPEN_MAX: %ld", sysconf(_SC_OPEN_MAX));
     line = get_next_line(fd);
     printf("%s", line);
+    line = get_next_line(fd);
+    printf("%s", line);
     return (0);
 }

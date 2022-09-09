@@ -19,24 +19,19 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-// # include <fcntl.h>
 
-typedef struct node{
-	char data[BUFFER_SIZE];
-	struct node *next;
-	struct node *prev;
-} node;
-// typedef struct Anode{
-// 	char data[BUFFER_SIZE];
-// 	struct Anode *next;
-// };
-
-// typedef struct Bnode{
-// 	Anode *head;
-// 	Anode *tail; 
-// 	struct Bnode *next;
-// };
-
+//  get_next_line
 char	*get_next_line(int fd);
+char	*read_line(int fd, char *res);
+char	*ft_free(char *buffer, char *buf);
+char	*ft_next(char *buffer);
+char	*ft_line(char *buffer);
+
+// get_next_line_utils
+size_t	ft_strlen(const char *s);
+void	ft_bzero(void *ptr, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_strjoin(char const *s1, char const *s2, int flag);
 
 #endif
