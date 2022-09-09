@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/09 15:46:43 by jeolim            #+#    #+#             */
+/*   Updated: 2022/09/09 15:46:44 by jeolim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 5000
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5000
 # endif
 
 # include <stdlib.h>
 # include <unistd.h>
-// # include <fctl.h>
 # include <limits.h>
 
 char	*get_next_line(int fd);

@@ -13,15 +13,15 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    static char *buffer;
-    char *line;
+	static char	*buffer;
+	char		*line;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-    buffer = read_line(fd, buffer);
-    if (!buffer)
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buffer = read_line(fd, buffer);
+	if (!buffer)
 		return (NULL);
 	line = get_line(buffer);
 	buffer = del_line(buffer);
@@ -33,10 +33,8 @@ char	*read_line(int fd, char *res)
 	char	*line;
 	int		read_byte;
 
-	// malloc if res dont exist
 	if (!res)
 		res = ft_calloc(1, 1);
-	// malloc buffer
 	line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	read_byte = 1;
 	while (read_byte > 0)
@@ -47,12 +45,9 @@ char	*read_line(int fd, char *res)
 			free(line);
 			return (NULL);
 		}
-		// 0 to end for leak
 		line[read_byte] = 0;
-		// join and free
 		res = ft_strjoin(res, line);
 		// res = fd_free(res, line);_
-		// quit if \n find
 		if (ft_strchr(line, '\n'))
 			break ;
 	}
@@ -70,57 +65,47 @@ char	*read_line(int fd, char *res)
 // 	return (tmp);
 // }
 
-char *get_line(char *buffer)
+char	*get_line(char *buffer)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	// if no line return NULL
 	if (!buffer[i])
 		return (NULL);
-	// go to the eol
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	// malloc to eol
 	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
-	// line = buffer
 	while (buffer[i] && buffer[i] != '\n')
 	{
 		line[i] = buffer[i];
 		i++;
 	}
-	// if eol is \0 or \n, replace eol by \n
 	if (buffer[i] && buffer[i] == '\n')
 		line[i++] = '\n';
 	return (line);
 }
 
-char *del_line(char *buffer)
+char	*del_line(char *buffer)
 {
 	int		i;
 	int		j;
 	char	*line;
 
 	i = 0;
-	// find len of first line
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	// if eol == \0 return NULL
 	if (!buffer[i])
 	{
 		free(buffer);
 		return (NULL);
 	}
-	// len of file - len of firstline + 1
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
-	// line == buffer
 	while (buffer[i])
 		line[j++] = buffer[i++];
 	free(buffer);
 	return (line);
 }
-

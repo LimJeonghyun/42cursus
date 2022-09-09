@@ -13,8 +13,8 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1024
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
 # endif
 
 # include <stdlib.h>
@@ -22,9 +22,9 @@
 
 //  get_next_line
 char	*get_next_line(int fd);
-char *read_line(int fd, char *buffer);
-char *get_line(char *buffer);
-char *del_line(char *buffer);
+char	*read_line(int fd, char *buffer);
+char	*get_line(char *buffer);
+char	*del_line(char *buffer);
 // char *fd_free(char *buffer, char *line);
 
 // get_next_line_utils
