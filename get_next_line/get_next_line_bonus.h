@@ -7,11 +7,21 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+// # include <fctl.h>
+# include <limits.h>
 
-typedef struct s_list{
-    int			index; // fd 값 저장
-    char		*buff; // 남은 문자열을 저장
-    struct s_gnl_lst	*next;
-} t_list;
+char	*get_next_line(int fd);
+char	*ft_strdup(char *s1);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(const char *s, int c);
+char	*make_line(char *backup, int i);
+char	*cut_line(char *backup);
+size_t	ft_strlen(const char *s);
 
 #endif
+
+// typedef struct s_list{
+//     int			index; // fd 값 저장
+//     char		*buff; // 남은 문자열을 저장
+//     struct s_gnl_lst	*next;
+// } t_list;
