@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 20:12:50 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 21:18:09 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_line(fd, buffer);
+	printf(">>%s", buffer);
 	if (!buffer)
 		return (NULL);
 	line = get_line(buffer);
@@ -35,9 +36,9 @@ char	*read_line(int fd, char *buffer)
 
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
-	line = calloc(BUFFER_SIZE + 1, sizeof(char));
+	line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	read_byte = 1;
-	while (read_byte > 0)
+	while (read_byte > 0 || ft_strchr(line, '\n'))
 	{
 		read_byte = read(fd, line, BUFFER_SIZE);
 		if (read_byte == -1)
@@ -47,8 +48,8 @@ char	*read_line(int fd, char *buffer)
 		}
 		line[read_byte] = 0;
 		buffer = fd_free(buffer, line);
-		if (ft_strchr(line, '\n'))
-			break ;
+		// if (ft_strchr(line, '\n'))
+		// 	break ;
 	}
 	free(line);
 	return (buffer);
@@ -92,7 +93,7 @@ char	*del_line(char *buffer)
 	char	*line;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (!buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:43 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 20:17:19 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:56:27 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5000
+#  define BUFFER_SIZE 1024
 # endif
 
 # include <stdlib.h>
@@ -23,19 +23,16 @@
 
 // get_next_line_bonus
 char	*get_next_line(int fd);
-char	*make_line(char *backup, int i);
-char	*cut_line(char *backup);
-size_t	ft_strlen(const char *s);
+char 	*read_line(int fd, char *buffer);
+char	*fd_free(char *buffer, char *line);
+char	*get_line(char *buffer);
+char	*del_line(char *buffer);
 
 // get_next_line_utils_bonus
-char	*ft_strdup(char *s1);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
+void	*ft_calloc(size_t count, size_t size);
+void	*ft_memset(void *ptr, int value, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *str, int c);
+size_t	ft_strlen(const char *s);
 
 #endif
-
-// typedef struct s_list{
-//     int			index; // fd 값 저장
-//     char		*buff; // 남은 문자열을 저장
-//     struct s_gnl_lst	*next;
-// } t_list;
