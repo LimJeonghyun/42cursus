@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:40 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 17:40:52 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:27:24 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,53 +40,51 @@ char	*get_next_line(int fd)
 	return (str);
 }
 
-char	*make_line(char *backup, int j)
+char	*make_line(char *buffer, int i)
 {
 	char	*str;
 
-	if (backup == NULL)
+	if (!buffer || !buffer[0])
 		return (NULL);
-	if (backup[0] == '\0')
-		return (NULL);
-	while (backup[j] != '\n' && backup[j] != '\0')
-		j++;
-	if (backup[j] == '\n')
-		str = malloc(sizeof(char) * (j + 2));
+	while (buffer[i] != '\n' && buffer[i] != '\0')
+		i++;
+	if (buffer[i] == '\n')
+		str = malloc(sizeof(char) * (i + 2));
 	else
-		str = malloc(sizeof(char) * (j + 1));
+		str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (0);
-	j = 0;
-	while (backup[j] != '\n' && backup[j] != '\0')
+	i = 0;
+	while (buffer[i] != '\n' && buffer[i] != '\0')
 	{
-		str[j] = backup[j];
-		j++;
+		str[i] = buffer[i];
+		i++;
 	}
-	if (backup[j] == '\n')
-		str[j++] = '\n';
-	str[j] = '\0';
+	if (buffer[i] == '\n')
+		str[i++] = '\n';
+	str[i] = '\0';
 	return (str);
 }
 
-char	*cut_line(char *backup)
+char	*cut_line(char *buffer)
 {
 	int		i;
 	char	*str;
 
 	i = 0;
-	if (backup == NULL)
+	if (buffer == NULL)
 		return (NULL);
-	while (backup[i] != '\n' && backup[i] != '\0')
+	while (buffer[i] != '\n' && buffer[i] != '\0')
 		i++;
-	if (backup[i] == '\0')
+	if (buffer[i] == '\0')
 	{
-		free(backup);
+		free(buffer);
 		return (NULL);
 	}
-	if (backup[i] == '\n')
+	if (buffer[i] == '\n')
 		i++;
-	str = ft_strdup(&backup[i]);
-	free(backup);
+	str = ft_strdup(&buffer[i]);
+	free(buffer);
 	return (str);
 }
 

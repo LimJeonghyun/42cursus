@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 17:23:08 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 20:12:50 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_line(fd, buffer);
-	printf("check: %s", buffer);
 	if (!buffer)
 		return (NULL);
 	line = get_line(buffer);
@@ -36,7 +35,7 @@ char	*read_line(int fd, char *buffer)
 
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
-	line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	line = calloc(BUFFER_SIZE + 1, sizeof(char));
 	read_byte = 1;
 	while (read_byte > 0)
 	{
