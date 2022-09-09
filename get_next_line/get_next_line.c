@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/08 19:45:17 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/09 16:17:10 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_line(fd, buffer);
 	if (!buffer)
@@ -46,8 +46,7 @@ char	*read_line(int fd, char *res)
 			return (NULL);
 		}
 		line[read_byte] = 0;
-		res = ft_strjoin(res, line);
-		// res = fd_free(res, line);_
+		res = fd_free(res, line);
 		if (ft_strchr(line, '\n'))
 			break ;
 	}
@@ -55,15 +54,14 @@ char	*read_line(int fd, char *res)
 	return (res);
 }
 
-// join and free
-// char *fd_free(char *buffer, char *line);
-// {
-// 	char	*tmp;
+char	*fd_free(char *buffer, char *line)
+{
+	char	*tmp;
 
-// 	tmp = ft_strjoin(buffer, line);
-// 	free(buffer);
-// 	return (tmp);
-// }
+	tmp = ft_strjoin(buffer, line);
+	free(buffer);
+	return (tmp);
+}
 
 char	*get_line(char *buffer)
 {
