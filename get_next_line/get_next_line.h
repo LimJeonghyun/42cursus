@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:35 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 19:16:37 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/16 20:31:49 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-//  get_next_line
 char	*get_next_line(int fd);
 char	*read_line(int fd, char *buffer);
 char	*fd_free(char *buffer, char *line);
 char	*get_line(char *buffer);
 char	*del_line(char *buffer);
 
-// get_next_line_utils
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *ptr, int value, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

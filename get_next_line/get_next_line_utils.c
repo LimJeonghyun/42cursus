@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:20 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/09 19:08:13 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/16 20:34:08 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,24 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	i = 0;
-	sizetotal = ft_strlen(s1) + ft_strlen(s2);
-	res = malloc(sizeof(char) * (sizetotal + 1));
-	if (!res || !s1 || !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[i] != 0)
+	sizetotal = ft_strlen(s1) + ft_strlen(s2);
+	res = ft_calloc(sizeof(char) * (sizetotal + 1));
+	if (!res)
+		return (NULL);
+	while (s1[i])
 	{
 		res[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j] != 0)
+	while (s2[j])
 	{
 		res[i] = s2[j];
 		i++;
 		j++;
 	}
-	res[sizetotal] = 0;
 	return (res);
 }
 
@@ -84,9 +85,7 @@ char	*ft_strchr(const char *str, int c)
 	while (str[i])
 	{
 		if ((char)c == str[i])
-		{
 			return ((char *)(str + i));
-		}
 		i++;
 	}
 	if (c == 0)

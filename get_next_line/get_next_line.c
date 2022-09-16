@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/15 13:09:45 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/16 20:38:32 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*read_line(int fd, char *buffer)
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
 	line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!line)
+		return (NULL);
 	read_byte = 1;
 	while (read_byte > 0)
 	{
@@ -59,6 +61,8 @@ char	*fd_free(char *buffer, char *line)
 	char	*tmp;
 
 	tmp = ft_strjoin(buffer, line);
+	if (!tmp)
+		return (NULL);
 	free(buffer);
 	return (tmp);
 }

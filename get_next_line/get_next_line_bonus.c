@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:40 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/15 16:32:04 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/16 17:59:39 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (read(fd, 0, 0) < 0 && buffer[fd])
+		{
+			free(buffer[fd]);
+			buffer[fd] = NULL;
+		}
 		return (NULL);
+	}
 	buffer[fd] = read_line(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
