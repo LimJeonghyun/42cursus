@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:46:43 by jeolim            #+#    #+#             */
-/*   Updated: 2022/09/16 20:31:50 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/09/19 19:16:02 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
 # endif
 
 # include <stdlib.h>
