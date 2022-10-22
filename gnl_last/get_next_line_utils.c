@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:20 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/22 18:41:13 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/10/22 18:55:05 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ char	*ft_strchr(const char *str, int c)
 	while (str[i])
 	{
 		if ((char)c == str[i])
-		{
 			return ((char *)(str + i));
-		}
 		i++;
 	}
 	if (c == 0)
