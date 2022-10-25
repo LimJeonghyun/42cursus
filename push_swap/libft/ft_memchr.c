@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 00:43:49 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 16:13:11 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 13:54:45 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-
-// node
-typedef struct s_node
+void	*ft_memchr(const void *ptr, int value, size_t n)
 {
-	int	value;
-	struct s_node *prev;
-	struct s_node *next;
-}	t_node;
+	size_t	i;
 
-// stack
-typedef struct s_stack
-{
-	struct s_node *top;
-	struct s_node *bottom;
-}	t_stack;
-
-//stack.c
-void	push();
-void	pop();
-int		isEmpty();
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)ptr)[i] == (unsigned char)value)
+			return ((void *)ptr + i);
+		i++;
+	}
+	return ((void *)0);
+}

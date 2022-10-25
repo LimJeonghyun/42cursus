@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 00:43:49 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 16:57:26 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 14:08:37 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-
-// node
-typedef struct s_node
+char	*ft_strdup(const char *s1)
 {
-	int	value;
-	struct s_node *prev;
-	struct s_node *next;
-}	t_node;
+	int		idx;
+	int		len;
+	char	*result;
 
-// stack
-typedef struct s_stack
-{
-	struct s_node *top;
-	struct s_node *bottom;
-}	t_stack;
-
-//stack.c
-void	push();
-void	pop();
-int		isEmpty();
-
-#endif
+	idx = 0;
+	len = ft_strlen(s1);
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (0);
+	while (s1[idx])
+	{
+		result[idx] = s1[idx];
+		idx++;
+	}
+	result[idx] = '\0';
+	return (result);
+}

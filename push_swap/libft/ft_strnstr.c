@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 00:43:49 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 16:47:14 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 14:15:07 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-
-// node
-typedef struct s_node
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	value;
-	struct s_node *prev;
-	struct s_node *next;
-}	t_node;
+	size_t	idx;
+	size_t	j;
 
-// stack
-typedef struct s_stack
-{
-	struct s_node *top;
-	struct s_node *bottom;
-}	t_stack;
-
-//stack.c
-void	push();
-void	pop();
-int		isEmpty();
-
-#endif
+	idx = 0;
+	if (!ft_strlen(needle))
+		return ((char *)haystack);
+	while (haystack[idx] && idx < len)
+	{
+		j = 0;
+		while (needle[j] == haystack[idx + j] && idx + j < len)
+		{
+			j++;
+			if (!needle[j])
+				return (&((char *)haystack)[idx]);
+		}
+		idx++;
+	}
+	return ((void *)0);
+}

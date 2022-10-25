@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 00:43:49 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 15:29:04 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 20:38:20 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-#include <unistd.h>
-#include <stdlib.h>
-
-// node
-typedef struct s_node
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	value;
-	struct s_node *prev;
-	struct s_node *next;
-}	t_node;
+	char		*tmp;
+	const char	*s;
 
-// stack
-typedef struct s_stack
-{
-	struct s_node *top;
-	struct s_node *bottom;
-}	t_stack;
-
-//stack.c
-void	push();
-void	pop();
-int		isEmpty();
-
-#endif
+	if (dst == 0 && src == 0)
+		return (NULL);
+	if (dst <= src)
+	{
+		tmp = dst;
+		s = src;
+		while (len--)
+			*tmp++ = *s++;
+	}
+	else
+	{
+		tmp = dst;
+		tmp += len;
+		s = src;
+		s += len;
+		while (len--)
+			*--tmp = *--s;
+	}
+	return (dst);
+}

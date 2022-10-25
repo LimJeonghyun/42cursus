@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 00:43:49 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 14:36:37 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 16:58:56 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include <unistd.h>
-#include <stdlib.h>
-
-// node
-typedef struct s_node
+char	*ft_strrchr(const char *str, int c)
 {
-	int	value;
-	struct s_node *prev;
-	struct s_node *next;
-}	t_node;
+	char	*ptr;
 
-// stack
-typedef struct s_stack
-{
-	struct s_node *top;
-	struct s_node *bottom;
-}	t_stack;
-
-//stack.c
-void	push();
-void	pop();
-int		isEmpty();
-
-#endif
+	ptr = NULL;
+	while (*str)
+	{
+		if (*str == (char)c)
+			ptr = (char *)str;
+		str++;
+	}
+	if (c == '\0')
+		return ((char *)str);
+	return (ptr);
+}
