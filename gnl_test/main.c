@@ -4,17 +4,33 @@
 #include <limits.h>
 #include <unistd.h>
 
+char *test(int d){
+    if (!d)
+        return ;
+    if (d < 0)
+        return "test";
+    return "check";
+}
 int main()
 {
-    char* line_m;
-    int fd_m;
+    char *get;
+
+    get = test();
+    printf(">>%s<<\n", get);
+    get = test(3);
+    printf(">>%s<<\n", get);
+    get = test(-1);
+    printf(">>%s<<\n", get);
+
+    // char* line_m;
+    // int fd_m;
     
-    printf(">>>Mandatory<<<\n");
-    fd_m = open("sample.txt", O_RDONLY);
-    line_m = get_next_line(fd_m);
-    printf("\nresult: %s", line_m);
-    line_m = get_next_line(fd_m);
-    printf("\nresult: %s", line_m);
+    // printf(">>>Mandatory<<<\n");
+    // fd_m = open("sample.txt", O_RDONLY);
+    // line_m = get_next_line(fd_m);
+    // printf("\nresult: %s", line_m);
+    // line_m = get_next_line(fd_m);
+    // printf("\nresult: %s", line_m);
     
     // printf(">>>Bonus<<<");
     // int fd_b[3];
