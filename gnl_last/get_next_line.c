@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 20:47:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/22 18:56:56 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/10/25 19:36:55 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 
-	// read(fd, NULL, 0) -> defence preparing
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
 	buffer = read_line(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	line = get_line(buffer);
+	line = get_lines(buffer);
 	buffer = del_line(buffer);
 	return (line);
 }
@@ -65,7 +64,7 @@ char	*fd_free(char *buffer, char *line)
 	return (tmp);
 }
 
-char	*get_line(char *buffer)
+char	*get_lines(char *buffer)
 {
 	char	*line;
 	int		i;
