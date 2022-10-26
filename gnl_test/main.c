@@ -9,14 +9,23 @@ int main()
 	system("leaks a.out");
 	// -fsanitize=address -g
 	// int fd_m;
+	// char *line_m;
+	// char *line_m1;
+	// char *line_m2;
     
     // printf(">>>Mandatory<<<\n");
     // fd_m = open("sample.txt", O_RDONLY);
     // line_m = get_next_line(fd_m);
     // printf("\nresult: %s", line_m);
-    // line_m = get_next_line(fd_m);
+    free(line_m);
+	// line_m = get_next_line(fd_m);
     // printf("\nresult: %s", line_m);
     
+	line_m1 = get_next_line(fd_m);
+	printf("\nresult: %s", line_m1);
+	line_m2 = get_next_line(fd_m);
+	printf("\nresult: %s", line_m2);
+
     // printf(">>>Bonus<<<");
     // int fd_b[3];
     // int i;
