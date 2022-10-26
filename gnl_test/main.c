@@ -4,26 +4,11 @@
 #include <limits.h>
 #include <unistd.h>
 
-char *test(int d){
-    if (!d)
-        return ;
-    if (d < 0)
-        return "test";
-    return "check";
-}
 int main()
 {
-    char *get;
-
-    get = test();
-    printf(">>%s<<\n", get);
-    get = test(3);
-    printf(">>%s<<\n", get);
-    get = test(-1);
-    printf(">>%s<<\n", get);
-
-    // char* line_m;
-    // int fd_m;
+	system("leaks a.out");
+	// -fsanitize=address -g
+	// int fd_m;
     
     // printf(">>>Mandatory<<<\n");
     // fd_m = open("sample.txt", O_RDONLY);
