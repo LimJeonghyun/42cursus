@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   additional.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 22:53:03 by jeolim           ###   ########.fr       */
+/*   Created: 2022/11/07 22:30:42 by jeolim            #+#    #+#             */
+/*   Updated: 2022/11/07 22:30:49 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "stdio.h"
 
-int main(int argc, char **argv)
+void	print_str(char *s)
 {
-	// t_node	node_a;
-	// t_depue deque_a;
-	// t_depue deque_b;
-	int		*arr;
+	int	len;
 
-	// node_a = NULL;
-	// deque_a = NULL;
-	// deque_b = NULL;
-	if (argc > 1)
+	if (s == NULL)
 	{
-		arr = parse_arg(argc, argv);
+		write(1, "(null)", ft_strlen("(null)"));
+		return ;
 	}
-	// system("leaks a.out");
-	return (0);
+	len = 0;
+	while (s[len])
+		len += write(1, &s[len], 1);
 }

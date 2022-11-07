@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                        :+:      :+:    :+:   */
+/*   check_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 02:34:50 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 19:09:17 by jeolim           ###   ########.fr       */
+/*   Created: 2022/11/07 19:30:57 by jeolim            #+#    #+#             */
+/*   Updated: 2022/11/07 22:30:25 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "stdio.h"
-
-// duplicate
-// already sorted
-
-void	print_str(char *s)
-{
-	int	len;
-
-	if (s == NULL)
-	{
-		write(1, "(null)", ft_strlen("(null)"));
-		return ;
-	}
-	len = 0;
-	while (s[len])
-		len += write(1, &s[len], 1);
-}
 
 int	is_empty(int argc, char **argv)
 {
@@ -51,7 +33,7 @@ int	is_empty(int argc, char **argv)
 				break ;
 		}
 		if (ft_strlen(argv[i]) == len)
-			total++;
+			return (1);
 	}
 	if (total == argc - 1)
 		return (1);
@@ -66,16 +48,19 @@ int	isnt_digit(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
+		j = -1;
+		while (argv[i][++j])
 		{
-			if ((argv[i][j] >= 9 && argv[i][j] <= 13) || argv[i][j] == ' ' \
-					|| argv[i][j] == '+' || argv[i][j] == '-')
-				j++;
+			if ((argv[i][j] >= 9 && argv[i][j] <= 13) || argv[i][j] == ' ')
+				continue ;
+			if (argv[i][j] == '+' || argv[i][j] == '-')
+			{
+				// "11-4"같은 상황을 막기위해서-> 숫자 중간에 들어오는 부호 막기
+				if (j != 0 && (argv[i][j - 1] > '0' && argv[i][j - 1] <= '9'))
+					return (1);
+			}
 			else if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
-			else
-				j++;
 		}
 		i++;
 	}
@@ -90,10 +75,4 @@ void	check_arg(int argc, char **argv)
 		exit(1);
 	}
 	return ;
-}
-
-char	**parse_arg(int argc, char **argv)
-{
-	check_arg(argc, argv);
-	return (0);
 }
