@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 17:57:27 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/08 13:47:14 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 15:08:53 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "stdio.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	// t_node	a;
-	// t_node	b;
-	char	**arr;
-	
-	// printf("input >> num : %d\n", argc);
-	// for(int i = 1; i < argc; i++)
-	// {
-	// 	printf("%d - list : %s\n", i, argv[i]);
-	// }
-	if (argc > 1)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		arr = parse_arg(argc, argv);
+		(*f)(lst->content);
+		lst = lst->next;
 	}
-	return (0);
 }

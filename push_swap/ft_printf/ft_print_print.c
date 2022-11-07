@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 17:57:27 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/14 13:02:28 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/14 13:22:53 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "stdio.h"
+#include "ft_printf.h"
 
-int main(int argc, char **argv)
+int	ft_print_char(int c)
 {
-	// t_node	a;
-	// t_node	b;
-	char	**arr;
-	
-	// printf("input >> num : %d\n", argc);
-	// for(int i = 1; i < argc; i++)
-	// {
-	// 	printf("%d - list : %s\n", i, argv[i]);
-	// }
-	if (argc > 1)
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_print_str(char *s)
+{
+	int	len;
+
+	if (s == NULL)
 	{
-		arr = parse_arg(argc, argv);
+		write(1, "(null)", ft_strlen("(null)"));
+		return (ft_strlen("(null)"));
 	}
-	return (0);
+	len = 0;
+	while (s[len])
+		len += write(1, &s[len], 1);
+	return (len);
+}
+
+int	ft_print_nbr(int n)
+{
+	char	*num;
+	int		len;
+
+	num = ft_itoa(n);
+	len = ft_print_str(num);
+	free(num);
+	return (len);
 }

@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 17:57:27 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 15:29:04 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 20:38:20 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "stdio.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	// t_node	a;
-	// t_node	b;
-	char	**arr;
-	
-	// printf("input >> num : %d\n", argc);
-	// for(int i = 1; i < argc; i++)
-	// {
-	// 	printf("%d - list : %s\n", i, argv[i]);
-	// }
-	if (argc > 1)
+	char		*tmp;
+	const char	*s;
+
+	if (dst == 0 && src == 0)
+		return (NULL);
+	if (dst <= src)
 	{
-		arr = parse_arg(argc, argv);
+		tmp = dst;
+		s = src;
+		while (len--)
+			*tmp++ = *s++;
 	}
-	return (0);
+	else
+	{
+		tmp = dst;
+		tmp += len;
+		s = src;
+		s += len;
+		while (len--)
+			*--tmp = *--s;
+	}
+	return (dst);
 }

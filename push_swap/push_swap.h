@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/10/26 02:47:34 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:11:44 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
 
 // node
 typedef struct s_node
@@ -33,7 +34,10 @@ typedef struct s_deque
 }	t_depue;
 
 //parsing
-char **parse_arg(int argc, char **argv);
+char	**parse_arg(int argc, char **argv);
+void	check_arg(int argc, char **argv);
+int		is_empty(int argc, char **argv);
+int		isnt_digit(char **argv);
 
 //stack.c
 void	push();

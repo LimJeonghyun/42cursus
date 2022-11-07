@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 17:57:27 by jeolim           ###   ########.fr       */
+/*   Created: 2022/07/06 14:36:37 by jeolim            #+#    #+#             */
+/*   Updated: 2022/07/08 16:58:56 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "push_swap.h"
-#include "stdio.h"
-
-int main(int argc, char **argv)
+char	*ft_strrchr(const char *str, int c)
 {
-	// t_node	a;
-	// t_node	b;
-	char	**arr;
-	
-	// printf("input >> num : %d\n", argc);
-	// for(int i = 1; i < argc; i++)
-	// {
-	// 	printf("%d - list : %s\n", i, argv[i]);
-	// }
-	if (argc > 1)
+	char	*ptr;
+
+	ptr = NULL;
+	while (*str)
 	{
-		arr = parse_arg(argc, argv);
+		if (*str == (char)c)
+			ptr = (char *)str;
+		str++;
 	}
-	return (0);
+	if (c == '\0')
+		return ((char *)str);
+	return (ptr);
 }
