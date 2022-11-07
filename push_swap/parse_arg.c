@@ -52,15 +52,16 @@ void *make_arr(int *result, char **str)
 	j = 0;
 	while (str[i])
 	{
-		if (str[i] == '-' || str[i] == '+')
+		if (str[i][0] == '-' || str[i][0] == '+')
 		{
-			if (str[i] == '-')
+			if (str[i][0] == '-')
 				sign *= -1;
 			continue;
 		}
 		else
 			sign = 1;
-		result[j + 1] = ft_atoi(str[i]) * sign;
+		if (ft_atoi(str[i]))
+			result[j + 1] = ft_atoi(str[i]) * sign;
 		free(str[i]);
 		str[i] = NULL;
 		i++;
@@ -69,6 +70,7 @@ void *make_arr(int *result, char **str)
 	result[i + 1] = 0;
 	free(str);
 	str = NULL;
+	return (result);
 }
 
 int	**parse_arg(int argc, char **argv)
@@ -83,9 +85,9 @@ int	**parse_arg(int argc, char **argv)
 	result = make_arr(result, str);
 	int idx;
 	idx = 0;
-	while (str[idx])
+	while (result[idx])
 	{
-		printf("%d : string >> %s\n", idx, str[idx]);
+		printf("%d : string >> %d\n", idx, result[idx]);
 		idx++;
 	}
 	

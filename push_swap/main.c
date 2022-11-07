@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	// t_node	node_a;
 	// t_depue deque_a;
 	// t_depue deque_b;
-	int		*arr;
+	int		**arr;
 
 	// node_a = NULL;
 	// deque_a = NULL;

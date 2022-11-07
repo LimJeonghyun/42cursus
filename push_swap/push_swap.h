@@ -34,10 +34,11 @@ typedef struct s_deque
 }	t_depue;
 
 //parsing
-int	**parse_arg(int argc, char **argv);
+int		**parse_arg(int argc, char **argv);
 void	check_arg(int argc, char **argv);
 int		isnt_digit(char **argv);
 int		is_empty(int argc, char **argv);
+void 	*make_arr(int *result, char **str);
 
 //check_arg
 int		is_empty(int argc, char **argv);
