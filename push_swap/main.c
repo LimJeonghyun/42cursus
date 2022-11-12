@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/12 21:59:33 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/12 22:43:39 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 
 int main(int argc, char **argv)
 {
-	// t_node	node_a;
-	// t_depue deque_a;
-	// t_depue deque_b;
+	t_node	node_a;
+	t_depue deque_a;
+	t_depue deque_b;
 	int		**arr;
 
-	// node_a = NULL;
-	// deque_a = NULL;
-	// deque_b = NULL;
 	if (argc > 1)
 	{
 		arr = parse_arg(argc, argv);
+		
 	}
 	// system("leaks a.out");
 	return (0);

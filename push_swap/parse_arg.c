@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 02:34:50 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/12 22:08:37 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/12 22:42:23 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ void	make_arr(int *result, char **str)
 	{
 		if (ft_atoi(str[i]))
 			result[j] = ft_atoi(str[i]);
+			exit(1);
 		free(str[i]);
-		str[i] = NULL;
 		i++;
 		j++;
 	}
 	free(str);
-	str = NULL;
 }
 
 int	**parse_arg(int argc, char **argv)
@@ -67,18 +66,25 @@ int	**parse_arg(int argc, char **argv)
 	char	**str;
 	int		*result;
 	int		i;
+	int		len;
 
 	i = 2;
 	check_arg(argc, argv);
 	str = get_arg(argc, argv);
-	result = ft_calloc(ft_strlen(*str), 4);
+	len = 0;
+	while (str[len])
+		len++;
+	printf("len : %d\n", i);
+	result = ft_calloc(len, 4);
+	if (!result)
+		exit(1);
 	make_arr(result, str);
 	int idx;
 	idx = 0;
-	while (result[idx])
+	while (idx < len)
 	{
 		printf("%d : string >> %d\n", idx, result[idx]);
 		idx++;
 	}
-	return (result);
+	return (0);
 }
