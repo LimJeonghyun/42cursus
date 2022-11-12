@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 02:34:50 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/12 21:59:17 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/12 22:08:37 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 // duplicate
 // already sorted
 
-char **get_arg(int argc, char **argv)
+char	**get_arg(int argc, char **argv)
 {
 	char	*str;
 	char	*ptr;
 	char	**result;
 	int		i;
-	
+
 	str = ft_strdup(argv[1]);
 	if (!str)
 		return (0);
@@ -42,10 +42,10 @@ char **get_arg(int argc, char **argv)
 	return (result);
 }
 
-void make_arr(int *result, char **str)
+void	make_arr(int *result, char **str)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -71,7 +71,7 @@ int	**parse_arg(int argc, char **argv)
 	i = 2;
 	check_arg(argc, argv);
 	str = get_arg(argc, argv);
-	result = ft_calloc(10, 4);
+	result = ft_calloc(ft_strlen(*str), 4);
 	make_arr(result, str);
 	int idx;
 	idx = 0;
@@ -80,6 +80,5 @@ int	**parse_arg(int argc, char **argv)
 		printf("%d : string >> %d\n", idx, result[idx]);
 		idx++;
 	}
-	
-	return (0);
+	return (result);
 }
