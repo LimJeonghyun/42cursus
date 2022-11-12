@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 00:27:09 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 22:53:03 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:59:33 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,4 @@ int main(int argc, char **argv)
 	// system("leaks a.out");
 	return (0);
 }
+// gcc main.c parse_arg.c check_arg.c libft/ft_atoi.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c libft/ft_strlen.c additional.c

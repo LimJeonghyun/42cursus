@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 23:52:10 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 22:45:42 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:58:17 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		**parse_arg(int argc, char **argv);
 void	check_arg(int argc, char **argv);
 int		isnt_digit(char **argv);
 int		is_empty(int argc, char **argv);
-void 	*make_arr(int *result, char **str);
+void 	make_arr(int *result, char **str);
 
 //check_arg
 int		is_empty(int argc, char **argv);
