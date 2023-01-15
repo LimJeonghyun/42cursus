@@ -29,3 +29,4 @@ int main(int argc, char **argv)
 	return (0);
 }
 // gcc main.c parse_arg.c check_arg.c libft/ft_atoi.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c libft/ft_strlen.c additional.c
+// gcc main.c parse_arg.c check_arg.c libft/ft_atoi.c libft/ft_split.c libft/ft_strdup.c libft/ft_strjoin.c libft/ft_strlen.c additional.c libft/ft_calloc.c libft/ft_memset.c
