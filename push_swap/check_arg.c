@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:30:57 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 22:30:25 by jeolim           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:51:46 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	is_empty(int argc, char **argv)
 			else
 				break ;
 		}
-		if (ft_strlen(argv[i]) == len)
+		if (ft_strlen(argv[i]) == len)  // 빈칸 갯수 == 총 길이 => 에러
 			return (1);
 	}
-	if (total == argc - 1)
+	if (total == argc - 1) // 빈칸 체크 : unused
 		return (1);
 	return (0);
 }
@@ -59,7 +59,7 @@ int	isnt_digit(char **argv)
 				if (j != 0 && (argv[i][j - 1] > '0' && argv[i][j - 1] <= '9'))
 					return (1);
 			}
-			else if (argv[i][j] < '0' || argv[i][j] > '9')
+			else if (argv[i][j] < '0' || argv[i][j] > '9')  
 				return (1);
 		}
 		i++;
@@ -70,9 +70,26 @@ int	isnt_digit(char **argv)
 void	check_arg(int argc, char **argv)
 {
 	if (is_empty(argc, argv) || isnt_digit(argv))
-	{
-		print_str("ERROR");
-		exit(1);
-	}
+		print_error();
 	return ;
+}
+
+void	check_duplicate(int **result)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = i + 1;
+	while (result[i])
+	{
+		j = i + 1;
+		while (result[j])
+		{
+			if (result[i] == result[j])
+				print_error();
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 22:30:42 by jeolim            #+#    #+#             */
-/*   Updated: 2022/11/07 22:30:49 by jeolim           ###   ########.fr       */
+/*   Updated: 2023/01/15 16:39:33 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,10 @@ void	print_str(char *s)
 	len = 0;
 	while (s[len])
 		len += write(1, &s[len], 1);
+}
+
+void	print_error()
+{
+	print_str("ERROR");
+	exit(1);
 }
