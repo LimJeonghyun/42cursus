@@ -8,6 +8,12 @@
         "libft.h": "c",
         "__locale": "c",
         "push_swap.h": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "stdarg.h": "c",
+        "__bit_reference": "c",
+        "algorithm": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c"
     }
 }
