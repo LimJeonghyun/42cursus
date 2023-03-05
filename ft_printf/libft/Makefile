@@ -26,7 +26,6 @@ all	:	$(NAME)
 $(NAME)	:	$(OBJS)
 		$(AR) $(NAME) $(OBJS)
 bonus :		$(OBJS) $(BNS_OBJS)
-		sleep 1
 		@make OBJS="$(OBJS) ${BNS_OBJS}"
 		
 %.o : %.c $(INCLUDES)

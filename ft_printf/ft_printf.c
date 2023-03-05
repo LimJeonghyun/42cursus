@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 18:04:30 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/15 15:30:08 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/14 16:01:35 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,4 @@ int	ft_printf(const char *args, ...)
 	}
 	va_end(v);
 	return (len);
-}
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int main()
-{
-	ft_printf("%p", (void *)15);
-	printf("%p", (void *)15);
 }

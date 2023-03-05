@@ -6,7 +6,7 @@
 /*   By: jeolim <jeolim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 18:10:32 by jeolim            #+#    #+#             */
-/*   Updated: 2022/07/14 16:03:41 by jeolim           ###   ########.fr       */
+/*   Updated: 2022/07/14 16:26:42 by jeolim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 int		ft_printf(const char *args, ...);
 int		ft_format(const char arg, va_list v);
